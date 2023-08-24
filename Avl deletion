@@ -1,0 +1,34 @@
+return root;
+}
+
+void printPreorder(struct Node* node) {
+    if (node != NULL) {
+        printf("%d ", node->key);
+        printPreorder(node->left);
+        printPreorder(node->right);
+    }
+}
+
+int main() {
+    struct Node* root = NULL;
+
+    int n, key;
+    printf("Enter the number of elements: ");
+    scanf("%d", &n);
+
+    printf("Enter the elements:\n");
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &key);
+        root = insert(root, key);
+    }
+
+    printf("Enter the element to delete: ");
+    scanf("%d", &key);
+    root = deleteNode(root, key);
+
+    printf("Preorder traversal of the AVL tree: ");
+    printPreorder(root);
+    printf("\n");
+
+    return 0;
+}
